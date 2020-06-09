@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Flask-SocketIO Test</title>
+    <title>508 Captioning Test</title>
     <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8">
@@ -39,7 +39,7 @@
                 if (elems.length > 0) {
                     // if this is a 'control' message, add a line break
                     if (re.test(elems[0])) {
-                        $('#steady').append('<br>');
+                        $('#steady').append('>>');
                     }
                     $('#steady').append(elems[0]+' ');
                 }
@@ -59,14 +59,39 @@
             });
         });
     </script>
+    <style>
+        body{
+            background-color:black;
+            color:white;
+            font-size:x-large;
+            font-family: sans-serif;
+        }
+        #steady{
+            color:white;
+            font-size: xx-large;
+        }
+        #pending{
+            color:silver;
+            font-size: xx-large;
+        }
+        #unstable{
+            color:gray;
+            font-size: xx-large;
+        }
+        #captioning{
+            padding: 30px;
+            border: solid 5px white;
+        }
+    </style>
 </head>
 <body>
-<h1>Live Transcription Demo</h1>
-<p><b>Connected to:  </b><span id="podname"></span></p>
-<h3>Received:</h3>
-<div id="steady" style="width:500px"></div>
-<br>
-<div id="pending" style="color:Gray"></div>
-<div id="unstable" style="color:Silver"></div>
+<h1>508 Captioning Demo</h1>
+<b>Connected to:  </b><span id="podname"></span>
+<h3>Captioning Window:</h3>
+<div id="captioning">
+    <span id="steady"></span>
+    <span id="pending"></span>
+    <span id="unstable"></span>
+    </div>
 </body>
 </html>
