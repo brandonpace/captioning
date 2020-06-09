@@ -224,7 +224,7 @@ func sendAudio(ctx context.Context, speechClient *speech.Client, config speechpb
 		if stream == nil {
 			stream = initStreamingRequest(ctx, speechClient, config)
 			go receiveResponses(stream, receiveChan)
-			emit("[NEW STREAM]")
+			emit(">>")
 		}
 
 		// Send audio, transcription responses received asynchronously
@@ -375,7 +375,7 @@ func flush() {
 	}
 	if msg != "" {
 		klog.Info("Flushing...")
-		emit("[FLUSH] " + msg)
+		emit(" -- " + msg)
 	}
 	resetIndex()
 }
