@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html>
-<head>
+<html><head>
     <title>508 Captioning Test</title>
     <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
@@ -66,6 +65,24 @@
             });
         });
     </script>
+    <script>
+            // Function to change webpage background color
+    function changeBodyBg()        {
+        var x = document.getElementById("backgroundColor").value;
+            alert(x);
+        document.getElementById("captioning").style. = x;
+    }
+    
+    // Function to change line height
+    function changeLineHeight()
+        document.getElementById("captioning").style.lineHeight = num;
+    }
+        
+        // Function to change font size
+    function changeFontSize(){
+        document.getElementById("captioning").style.fontSize = num;
+    }
+    </script>
     <style>
         body{
             background-color:black;
@@ -89,9 +106,40 @@
             font-weight: bold;
             line-height: 1.5;
         }
+        #header{
+            padding: 10px;
+            background-color: navy;
+        }
     </style>
 </head>
 <body>
+    <div id="header">
+    Background Color: 
+<select id="backgroundColor" onchange="changeBodyBg()">
+<option value="">Background Color</option>
+<option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
+<option value="#808080" style="background-color: Gray;">Gray</option>
+<option value="#A9A9A9" style="background-color: DarkGray;">DarkGray</option>
+<option value="#D3D3D3" style="background-color: LightGrey;">LightGray</option>
+<option value="#FFFFFF" style="background-color: White;">White</option>
+<option value="#7FFFD4" style="background-color: Aquamarine;">Aquamarine</option>
+<option value="#0000FF" style="background-color: Blue;">Blue</option>
+<option value="#000080" style="background-color: Navy;color: #FFFFFF;">Navy</option>
+<option value="#800080" style="background-color: Purple;color: #FFFFFF;">Purple</option>
+<option value="#FF1493" style="background-color: DeepPink;">DeepPink</option>
+<option value="#EE82EE" style="background-color: Violet;">Violet</option>
+<option value="#FFC0CB" style="background-color: Pink;">Pink</option>
+<option value="#006400" style="background-color: DarkGreen;color: #FFFFFF;">DarkGreen</option>
+<option value="#008000" style="background-color: Green;color: #FFFFFF;">Green</option>
+<option value="#9ACD32" style="background-color: YellowGreen;">YellowGreen</option>
+<option value="#FFFF00" style="background-color: Yellow;">Yellow</option>
+<option value="#FFA500" style="background-color: Orange;">Orange</option>
+<option value="#FF0000" style="background-color: Red;">Red</option>
+<option value="#A52A2A" style="background-color: Brown;">Brown</option>
+<option value="#DEB887" style="background-color: BurlyWood;">BurlyWood</option>
+<option value="#F5F5DC" style="background-color: Beige;">Beige</option>
+</select>
+    </div>
 <h1>508 Captioning Demo</h1>
 <b>Connected to:  </b><span id="podname"></span>
 <h3>Captioning Window:</h3>
