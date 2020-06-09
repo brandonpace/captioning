@@ -40,20 +40,27 @@
                     // if this is a 'control' message, add a line break
                     if (re.test(elems[0])) {
                         $('#steady').append('<br>');
+                        window.scrollTo(0,document.body.scrollHeight);
                     }
                     $('#steady').append(elems[0]+' ');
+                    window.scrollTo(0,document.body.scrollHeight);
                 }
                 if (elems.length > 1) {
                     $('#pending').text(elems[1]);
+                    window.scrollTo(0,document.body.scrollHeight);
                     if (elems.length > 2) {
                         $('#unstable').text(elems[2]);
+                        window.scrollTo(0,document.body.scrollHeight);
                     }
                 }
                 // clear if not present
                 if (elems.length < 3) {
+                    window.scrollTo(0,document.body.scrollHeight);
                     $('#unstable').text('');
+                    window.scrollTo(0,document.body.scrollHeight);
                     if (elems.length < 2) {
                         $('#pending').text('');
+                        window.scrollTo(0,document.body.scrollHeight);
                     }
                 }
             });
@@ -63,24 +70,24 @@
         body{
             background-color:black;
             color:white;
-            font-size:x-large;
             font-family: sans-serif;
         }
         #steady{
             color:white;
-            font-size: xx-large;
         }
         #pending{
             color:silver;
-            font-size: xx-large;
         }
         #unstable{
             color:gray;
-            font-size: xx-large;
         }
         #captioning{
-            padding: 30px;
-            border: solid 5px white;
+            padding: 15px;
+            border: solid 5px gray;
+            margin: 30px;
+            font-size: 75px;
+            font-weight: bold;
+            line-height: 1.2;
         }
     </style>
 </head>
