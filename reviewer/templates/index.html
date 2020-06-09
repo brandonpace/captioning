@@ -39,7 +39,7 @@
                 if (elems.length > 0) {
                     // if this is a 'control' message, add a line break
                     if (re.test(elems[0])) {
-                        $('#steady').append('<br>');
+                        $('#steady').append(' ');
                         window.scrollTo(0,document.body.scrollHeight);
                     }
                     $('#steady').append(elems[0]+' ');
@@ -84,7 +84,7 @@
         #captioning{
             padding: 15px;
             border: solid 5px gray;
-            margin: 30px;
+            margin: 15px;
             font-size: 75px;
             font-weight: bold;
             line-height: 1.2;
