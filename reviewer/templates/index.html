@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html><head>
     <title>508 Captioning Test</title>
     <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
@@ -66,20 +65,17 @@
         });
     </script>
     <script>
-            // Function to change webpage background color
-    function changeBodyBg()        {
-        var x = document.getElementById("backgroundColor").value;
-            alert(x);
-        document.getElementById("captioning").style. = x;
+    function changeBodyBg()
+    {
+        var bkgdcolor = document.getElementById("backgroundColor").value;
+        document.getElementById("captioning").style.backgroundColor = bkgdcolor;
     }
-    
-    // Function to change line height
     function changeLineHeight()
+    {
         document.getElementById("captioning").style.lineHeight = num;
     }
-        
-        // Function to change font size
-    function changeFontSize(){
+    function changeFontSize()
+    {
         document.getElementById("captioning").style.fontSize = num;
     }
     </script>
@@ -148,5 +144,5 @@
     <span id="pending"></span>
     <span id="unstable"></span>
     </div>
-</body>
-</html>
+
+</body></html>
