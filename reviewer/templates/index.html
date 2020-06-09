@@ -3,25 +3,63 @@
     <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8">
-        $(document).ready(function() {
-            var toggle = true;
-            function toggleAutoScroll()
-            {
-                if(toggle == true)
-                {
-                    toggle = false;   
-                }
-                else
-                {
-                    toggle = true;   
-                }
-            }
-            var socket = io({
-                'reconnectionDelay': 500,
-                'reconnectionDelayMax': 1000,
-                'timeout': 3000,
-                transports: ['websocket']
-            });
+    var toggle = true;
+    var buttontext = "Toggle OFF Autoscroll";
+    function toggleAutoScroll()
+    {
+        if(toggle == true)
+        {
+            toggle = false;
+            document.getElementById('autoscrollButton').innerText = 'Start Autoscroll';
+        }
+        else
+        {
+            toggle = true;
+            document.getElementById('autoscrollButton').innerText = 'Stop Autoscroll';
+        }
+    }
+    function changeBodyBg()
+    {
+        var bkgdcolor = document.getElementById("backgroundColor").value;
+        document.getElementById("captioning").style.backgroundColor = bkgdcolor;
+    }
+    function changeBodyFontColor()
+    {
+        var fontcolor = document.getElementById("fontColor").value;
+        document.getElementById("captioning").style.color = fontcolor;
+    }
+    function changeLineHeight()
+    {
+        var number = document.getElementById("lineHeight").value;
+        document.getElementById("captioning").style.lineHeight = number;
+    }
+    function changeFontSize()
+    {
+        var fontSizeNumber = document.getElementById("fontSize").value;
+        document.getElementById("captioning").style.fontSize = fontSizeNumber;
+    }
+    function hideHeader()
+    {
+        var x = document.getElementById("header");
+        var y = document.getElementById("headingthree");
+        if (x.style.display === "none") 
+        {
+            x.style.display = "block";
+            y.style.display = "block";
+            document.getElementById('headerButton').innerText = 'Hide Header';
+            } else {
+            x.style.display = "none";
+                y.style.display = "none";
+            document.getElementById('headerButton').innerText = 'Show Header';
+        }
+     }
+     $(document).ready(function() {
+        var socket = io({
+            'reconnectionDelay': 500,
+            'reconnectionDelayMax': 1000,
+            'timeout': 3000,
+            transports: ['websocket']
+        });
             // Event handler for new connections.
             socket.on('connect', function() {
                 console.log('Socketio connected '+ new Date().toISOString());
@@ -76,43 +114,6 @@
             });
         });
     </script>
-    <script>
-    function changeBodyBg()
-    {
-        var bkgdcolor = document.getElementById("backgroundColor").value;
-        document.getElementById("captioning").style.backgroundColor = bkgdcolor;
-    }
-    function changeBodyFontColor()
-    {
-        var fontcolor = document.getElementById("fontColor").value;
-        document.getElementById("captioning").style.color = fontcolor;
-    }
-    function changeLineHeight()
-    {
-        var number = document.getElementById("lineHeight").value;
-        document.getElementById("captioning").style.lineHeight = number;
-    }
-    function changeFontSize()
-    {
-        var fontSizeNumber = document.getElementById("fontSize").value;
-        document.getElementById("captioning").style.fontSize = fontSizeNumber;
-    }
-    function hideHeader()
-    {
-        var x = document.getElementById("header");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-            } else {
-            x.style.display = "none";
-        }
-        var y = document.getElementById("headingthree");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-            } else {
-            x.style.display = "none";
-        }
-    }   
-    </script>
     <style>
         body{
             background-color:black;
@@ -135,6 +136,7 @@
             font-size: 75px;
             font-weight: bold;
             line-height: 1.5;
+            min-height: calc(100vh - 70px);
         }
         #header{
             padding: 10px;
@@ -147,9 +149,8 @@
     </style>
 </head>
 <body>
-    <div id="header">
-        Font Color:
-        <select id="fontColor" onchange="changeBodyFontColor()">
+<div id="header">
+Font Color: <select id="fontColor" onchange="changeBodyFontColor()">
 <option value="">Font Color</option>
 <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
 <option value="#808080" style="background-color: Gray;">Gray</option>
@@ -173,8 +174,7 @@
 <option value="#DEB887" style="background-color: BurlyWood;">BurlyWood</option>
 <option value="#F5F5DC" style="background-color: Beige;">Beige</option>
 </select>
-    Background Color: 
-<select id="backgroundColor" onchange="changeBodyBg()">
+Background Color: <select id="backgroundColor" onchange="changeBodyBg()">
 <option value="">Background Color</option>
 <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
 <option value="#808080" style="background-color: Gray;">Gray</option>
@@ -198,8 +198,7 @@
 <option value="#DEB887" style="background-color: BurlyWood;">BurlyWood</option>
 <option value="#F5F5DC" style="background-color: Beige;">Beige</option>
 </select>
-        Line Height: 
-        <select id="lineHeight" onchange="changeLineHeight()">
+Line Height: <select id="lineHeight" onchange="changeLineHeight()">
 <option value="">Line Height</option>
 <option value="1.0">1.0</option>
 <option value="1.1">1.1</option>
@@ -243,9 +242,7 @@
 <option value="4.9">4.9</option>
 <option value="5.0">5.0</option>
 </select>
-        
-                Font Size: 
-        <select id="fontSize" onchange="changeFontSize()">
+Font Size: <select id="fontSize" onchange="changeFontSize()">
 <option value="">Font Size</option>
 <option value="8">8</option>
 <option value="10">10</option>
@@ -305,8 +302,8 @@
     <span id="unstable"></span>
     </div>
  <div id="footer">
-     <button type="button" onclick="toggleAutoScroll()">Toggle Autoscroll</button>
-     <button type="button" onclick="hideHeader()">Hide Header</button>
+     <button type="button" id="autoscrollButton" onclick="toggleAutoScroll()">Toggle Autoscroll</button>
+     <button type="button" id="headerButton" onclick="hideHeader()">Hide Header</button>
     </div>
 </body>
 </html>
